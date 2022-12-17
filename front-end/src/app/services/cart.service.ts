@@ -14,7 +14,7 @@ export class CartService {
   constructor() {}
 
   addToCart(product: Product): void {
-    let cartItem = this.cart.items.find(item => item.product.id = product.id);
+    let cartItem = this.cart.items.find(item => item.product.id === product.id);
     if (cartItem) {
       return;
     } else {
@@ -46,6 +46,10 @@ export class CartService {
 
   getCartObservable(): Observable<Cart> {
     return this.cartSubject.asObservable();
+  }
+
+  getCart(): Cart {
+    return this.cartSubject.value;
   }
 
   private setCartToLocalStorage(): void {

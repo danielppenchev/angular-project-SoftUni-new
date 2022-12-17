@@ -2,29 +2,14 @@
     <div class="details">
         <app-title title="Login"></app-title>
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
-            <div class="input-container">
-                <label>Email
-                    <div>
-                        <input type="email" placeholder="Email" formControlName="email"/>
-                    </div>
-                </label>
-            </div>
-            <div class="error-list" *ngIf="fc.email.errors && isSubmitted">
-                <div *ngIf="fc.email.errors.required">Please fill in this field!</div>
-                <div *ngIf="fc.email.errors.email">The email you entered is not formatted correctly!</div>
-            </div>
-            <div class="input-container">
-                <label>Password
-                    <div>
-                        <input type="password" placeholder="Password" formControlName="password"/>
-                    </div>
-                </label>
-            </div>
-            <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
-                <div *ngIf="fc.password.errors.required">Please fill in this field!</div>
-            </div>
-            <div class="button">
-                <button type="submit">Login</button>
+            <text-input [control]="fc.email" [showErrorsWhen]="isSubmitted" type="email" label="Email"></text-input>
+            <text-input [control]="fc.password" [showErrorsWhen]="isSubmitted" type="password" label="Password"></text-input>
+            <default-button text="Login"></default-button>
+
+            <div class="register">
+                Don't have an account yet?&nbsp;
+                <a routerLink="/register" [queryParams]="{ returnUrl: returnUrl }">Register</a> 
+                &nbsp;Here
             </div>
         </form>
     </div>

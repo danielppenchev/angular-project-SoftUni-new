@@ -10,8 +10,8 @@
     width: 28rem;
 }
 
-form {
+.register {
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
